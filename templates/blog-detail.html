@@ -67,7 +67,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6">
                                     <div class="blog__details__tags">
                                         {% for tag in object.tag.values %}
-                                            <a href="#">#{{ tag.name }}</a>
+                                            <a href="{% url 'blogs:posts' %}?tag={{ tag.name }}">#{{ tag.name }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>
