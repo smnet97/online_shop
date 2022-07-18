@@ -75,18 +75,24 @@
                         </div>
                         <div class="blog__details__btns">
                             <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <a href="" class="blog__details__btns__item">
-                                        <p><span class="arrow_left"></span> Previous Pod</p>
-                                        <h5>It S Classified How To Utilize Free Classified Ad Sites</h5>
-                                    </a>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <a href="" class="blog__details__btns__item blog__details__btns__item--next">
-                                        <p>Next Pod <span class="arrow_right"></span></p>
-                                        <h5>Tips For Choosing The Perfect Gloss For Your Lips</h5>
-                                    </a>
-                                </div>
+                                {% if object.get_next_by_created_at %}
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <a href="{% url 'blogs:detail' pk=object.get_next_by_created_at.pk %}"
+                                           class="blog__details__btns__item">
+                                            <p><span class="arrow_left"></span> Previous Pod</p>
+                                            <h5>{{ object.get_next_by_created_at.title }}</h5>
+                                        </a>
+                                    </div>
+                                {% endif %}
+                                {% if object.get_previous_by_created_at %}
+                                    <div class="col-lg-6 col-md-6 col-sm-6 {% if not object.get_next_by_created_at %}offset-6{% endif %}">
+                                        <a href="{% url 'blogs:detail' pk=object.get_previous_by_created_at.pk %}"
+                                           class="blog__details__btns__item blog__details__btns__item--next">
+                                            <p>Next Pod <span class="arrow_right"></span></p>
+                                            <h5>{{ object.get_previous_by_created_at.title }}</h5>
+                                        </a>
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="blog__details__comment">
