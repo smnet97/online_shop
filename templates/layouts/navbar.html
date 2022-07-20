@@ -65,7 +65,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'pages:home' %}">Home</a></li>
-                        <li><a href="./shop.html">Shop</a></li>
+                        <li class="{% if request.path == '/shop/' %}active{% endif %}"><a href="{% url 'shop:home' %}">Shop</a></li>
                         <li class="{% if request.path == '/blog/' %}active{% endif %}"><a href="{% url 'blogs:posts' %}">Blog</a></li>
                         <li class="{% if request.path == '/contact/' %}active{% endif %}"><a href="{% url 'pages:contact' %}">Contacts</a></li>
                     </ul>

@@ -945,6 +945,16 @@ ol {
 	background: #111111;
 }
 
+.new {
+	width: 65.83px !important;
+	color: #111111 !important;
+	background: #ffffff !important;
+}
+
+.new-mt {
+	margin-top: 30px;
+}
+
 .product__item.sale .product__item__text .rating i {
 	color: #f7941d;
 }
