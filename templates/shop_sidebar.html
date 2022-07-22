@@ -1,7 +1,7 @@
 {% load static %}
 <div class="shop__sidebar">
     <div class="shop__sidebar__search">
-        <form action="{% url 'shop:home' %}", method="GET">
+        <form action="{% url 'shop:home' %}" , method="GET">
             <input name="search" value="{{ request.GET.search }}" type="text" placeholder="Search...">
             <button type="submit"><span class="icon_search"></span></button>
         </form>
@@ -16,15 +16,11 @@
                     <div class="card-body">
                         <div class="shop__sidebar__categories">
                             <ul class="nice-scroll">
-                                <li><a href="#">Men (20)</a></li>
-                                <li><a href="#">Women (20)</a></li>
-                                <li><a href="#">Bags (20)</a></li>
-                                <li><a href="#">Clothing (20)</a></li>
-                                <li><a href="#">Shoes (20)</a></li>
-                                <li><a href="#">Accessories (20)</a></li>
-                                <li><a href="#">Kids (20)</a></li>
-                                <li><a href="#">Kids (20)</a></li>
-                                <li><a href="#">Kids (20)</a></li>
+                                {% for cat in categories %}
+                                    <li><a href="?cat={{ cat.pk }}"
+                                           class="{% if request.GET.cat == cat.pk|stringformat:'i' %}text-dark{% endif %}">{{ cat.name }}
+                                        ({{ cat.products.count }})</a></li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -146,13 +142,9 @@
                 <div id="collapseSix" class="collapse show" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="shop__sidebar__tags">
-                            <a href="#">Product</a>
-                            <a href="#">Bags</a>
-                            <a href="#">Shoes</a>
-                            <a href="#">Fashio</a>
-                            <a href="#">Clothing</a>
-                            <a href="#">Hats</a>
-                            <a href="#">Accessories</a>
+                            {% for tag in tags %}
+                                <a href="?tag={{ tag.pk }}" style="{% if request.GET.tag == tag.pk|stringformat:'i' %}background-color: #000; color: #fff;{% endif %}" >#{{ tag.name }}</a>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
