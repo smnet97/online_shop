@@ -39,9 +39,10 @@
                                 <div class="shop__product__option__right">
                                     <p>Sort by Price:</p>
                                     <select>
+                                        <option value="">-----</option>
                                         <option value="">Low To High</option>
-                                        <option value="">$0 - $55</option>
-                                        <option value="">$55 - $100</option>
+                                        <option value="">High To Low</option>
+                                        <option value="">Sale</option>
                                     </select>
                                 </div>
                             </div>
@@ -72,4 +73,19 @@
         </div>
     </section>
     <!-- Shop Section End -->
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        function addUrlParameter(name, value){
+            let searchParameter = new URLSearchParams(window.location.search)
+            if(searchParameter.has(name) && searchParameter.get(value) == value){
+                searchParameter.delete(name)
+            }else {
+                searchParameter.set(name, value)
+            }
+
+            window.location.search
+        }
+    </script>
 {% endblock %}
