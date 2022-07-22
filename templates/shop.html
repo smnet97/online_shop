@@ -50,47 +50,7 @@
                     <div class="row">
                         {% for product in object_list %}
                             <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item sale">
-                                    <div class="product__item__pic set-bg"
-                                         data-setbg="{{ product.main_image.url }}">
-                                        {% if product.is_discount %}
-                                            <span class="label">Sale</span>
-                                        {% endif %}
-                                        {% if product.new %}
-                                            <span class="label new {% if product.is_discount %}new-mt{% endif %}">New</span>
-                                        {% endif %}
-                                        <ul class="product__hover">
-                                            <li><a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
-                                            </li>
-                                            <li><a href="#"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <h6>{{ product.title }}</h6>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <h5>${{ product.get_price }} {% if product.is_discount %}
-                                            <del class="text-secondary">{{ product.price }}</del> {% endif %}</h5>
-                                        <div class="product__color__select">
-                                            <label for="pc-16">
-                                                <input type="radio" id="pc-16">
-                                            </label>
-                                            <label class="active black" for="pc-17">
-                                                <input type="radio" id="pc-17">
-                                            </label>
-                                            <label class="grey" for="pc-18">
-                                                <input type="radio" id="pc-18">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% include 'product_item.html' %}
                             </div>
                         {% endfor %}
                     </div>
