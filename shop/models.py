@@ -30,6 +30,42 @@ class ProductTagModel(models.Model):
         verbose_name_plural = 'tags'
 
 
+class BrandModel(models.Model):
+    name = models.CharField(max_length=60, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'brand'
+        verbose_name_plural = 'brands'
+
+
+class SizeModel(models.Model):
+    name = models.CharField(max_length=60, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'size'
+        verbose_name_plural = 'sizes'
+
+
+class ColorModel(models.Model):
+    code = models.CharField(max_length=60, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.code
+
+    class Meta:
+        verbose_name = 'color'
+        verbose_name_plural = 'colors'
+
+
 class ProductModel(models.Model):
     title = models.CharField(max_length=60, verbose_name=_('title'))
     short_description = models.CharField(max_length=255, verbose_name=_('short description'))
@@ -48,6 +84,23 @@ class ProductModel(models.Model):
         ProductTagModel,
         related_name='products',
         verbose_name=_('tags')
+    )
+    sizes = models.ManyToManyField(
+        SizeModel,
+        related_name='products',
+        verbose_name=_('sizes')
+    )
+    colors = models.ManyToManyField(
+        ColorModel,
+        related_name='products',
+        verbose_name=_('colors')
+    )
+    brand = models.ForeignKey(
+        BrandModel,
+        on_delete=models.RESTRICT,
+        related_name='products',
+        verbose_name=_('brand'),
+        null=True
     )
 
     def get_price(self):
