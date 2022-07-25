@@ -143,7 +143,7 @@
                     <div class="card-body">
                         <div class="shop__sidebar__tags">
                             {% for tag in tags %}
-                                <a href="?tag={{ tag.pk }}" style="{% if request.GET.tag == tag.pk|stringformat:'i' %}background-color: #000; color: #fff;{% endif %}" >#{{ tag.name }}</a>
+                                <a onclick="addUrlParameter('tag', {{ tag.pk }})" style="{% if request.GET.tag == tag.pk|stringformat:'i' %}background-color: #000; color: #fff;{% endif %}" >#{{ tag.name }}</a>
                             {% endfor %}
                         </div>
                     </div>
