@@ -36,7 +36,8 @@
                             <ul>
                                 {% for brand in brands %}
                                     <li><a onclick="addUrlParameter('brand', {{ brand.pk }})"
-                                    class="{% if request.GET.brand == brand.pk|stringformat:'i' %}text-dark{% endif %}">{{ brand.name }}</a></li>
+                                           class="{% if request.GET.brand == brand.pk|stringformat:'i' %}text-dark{% endif %}">{{ brand.name }}</a>
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -70,7 +71,7 @@
                     <div class="card-body">
                         <div class="shop__sidebar__tags">
                             {% for size in sizes %}
-                                 <a onclick="addUrlParameter('size', {{ size.pk }}) "
+                                <a onclick="addUrlParameter('size', {{ size.pk }}) "
                                    style="{% if request.GET.size == size.pk|stringformat:'i' %}background-color: #000; color: #fff;{% endif %}">#{{ size.name }}</a>
                             {% endfor %}
 
@@ -87,7 +88,8 @@
                         <div class="shop__sidebar__color">
                             {% for color in colors %}
                                 <label style="background-color: {{ color.code }}" for="{{ color.code }}">
-                                    <input onclick="addUrlParameter('color', {{ color.pk }})" type="radio" id="{{ color.code }}">
+                                    <input onclick="addUrlParameter('color', {{ color.pk }})" type="radio"
+                                           id="{{ color.code }}">
                                 </label>
                             {% endfor %}
 
