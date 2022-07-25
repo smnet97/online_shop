@@ -100,36 +100,20 @@
                             <div class="product__details__option">
                                 <div class="product__details__option__size">
                                     <span>Size:</span>
-                                    <label for="xxl">xxl
-                                        <input type="radio" id="xxl">
-                                    </label>
-                                    <label class="active" for="xl">xl
-                                        <input type="radio" id="xl">
-                                    </label>
-                                    <label for="l">l
-                                        <input type="radio" id="l">
-                                    </label>
-                                    <label for="sm">s
-                                        <input type="radio" id="sm">
-                                    </label>
+                                    {% for size in object.sizes.all %}
+                                        <label for="{{ size.name }}">{{ size.name }}
+                                            <input type="radio" id="{{ size.name }}">
+                                        </label>
+                                    {% endfor %}
+
                                 </div>
                                 <div class="product__details__option__color">
                                     <span>Color:</span>
-                                    <label class="c-1" for="sp-1">
-                                        <input type="radio" id="sp-1">
-                                    </label>
-                                    <label class="c-2" for="sp-2">
-                                        <input type="radio" id="sp-2">
-                                    </label>
-                                    <label class="c-3" for="sp-3">
-                                        <input type="radio" id="sp-3">
-                                    </label>
-                                    <label class="c-4" for="sp-4">
-                                        <input type="radio" id="sp-4">
-                                    </label>
-                                    <label class="c-9" for="sp-9">
-                                        <input type="radio" id="sp-9">
-                                    </label>
+                                    {% for color in object.colors.all %}
+                                        <label style="background-color: {{ color.code }}" for="{{ color.code }}">
+                                            <input type="radio" id="{{ color.code }}">
+                                        </label>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="product__details__cart__option">
