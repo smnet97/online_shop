@@ -951,6 +951,10 @@ ol {
 	background: #ffffff !important;
 }
 
+.color_active {
+	border: 1px solid black !important;
+}
+
 .new-mt {
 	margin-top: 30px;
 }

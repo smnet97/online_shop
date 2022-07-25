@@ -36,6 +36,7 @@ class ColorModelAdmin(admin.ModelAdmin):
         free_space = '&nbsp;' * 5
         return mark_safe(f"<div style='background-color:{obj.code}; width:200px;'>{free_space}</div>")
 
+
 @admin.register(CategoryModel)
 class CategoryModelAdmin(admin.ModelAdmin):
     list_display = ['name']

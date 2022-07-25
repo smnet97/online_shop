@@ -1,5 +1,12 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
+{% block extra_css %}
+    <style>
+        a:hover {
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
 
 {% block content %}
     <!-- Breadcrumb Section Begin -->
@@ -38,11 +45,11 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
                                     <p>Sort by Price:</p>
-                                    <select>
+                                    <select onchange="addUrlParameter('sort', this.value)">
                                         <option value="">-----</option>
-                                        <option value="">Low To High</option>
-                                        <option value="">High To Low</option>
-                                        <option value="">Sale</option>
+                                        <option {% if request.GET.sort == 'price' %}selected{% endif %} value="price">Low To High</option>
+                                        <option {% if request.GET.sort == '-price' %}selected{% endif %} value="-price">High To Low</option>
+{#                                        <option value="sale">Sale</option>#}
                                     </select>
                                 </div>
                             </div>
