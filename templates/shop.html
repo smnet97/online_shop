@@ -1,5 +1,6 @@
 {% extends 'layouts/base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block extra_css %}
     <style>
         a:hover {
@@ -108,10 +109,13 @@
             type: "double",
             min: {{ min_price }},
             max: {{ max_price }},
-            from: 50,
-            to: 70,
+            from: {% get_current_price request 0 %},
+            to: {% get_current_price request 1 %},
             grid: true,
             prefix: "$",
+            onFinish(data){
+                addUrlParameter('price', data.from.toString() + ';' + data.to.toString())
+            }
         });
     </script>
 

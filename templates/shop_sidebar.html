@@ -4,6 +4,7 @@
         <form action="{% url 'shop:home' %}" , method="GET">
             <input name="search" value="{{ request.GET.search }}" type="text" placeholder="Search...">
             <button type="submit"><span class="icon_search"></span></button>
+            <a style="color: black" href="{% url 'shop:home' %}">Clear filter</a>
         </form>
     </div>
     <div class="shop__sidebar__accordion">
