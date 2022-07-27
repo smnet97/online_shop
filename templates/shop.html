@@ -57,7 +57,7 @@
                                         <option {% if request.GET.sort == '-price' %}selected{% endif %} value="-price">
                                             High To Low
                                         </option>
-                                        {#                                        <option value="sale">Sale</option>#}
+                                        <option {% if request.GET.sort == 'sale' %}selected{% endif %} value="sale">Sale</option>
                                     </select>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
             to: {% get_current_price request 1 %},
             grid: true,
             prefix: "$",
-            onFinish(data){
+            onFinish(data) {
                 addUrlParameter('price', data.from.toString() + ';' + data.to.toString())
             }
         });
