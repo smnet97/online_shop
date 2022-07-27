@@ -6,6 +6,8 @@
             cursor: pointer;
         }
     </style>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
 {% endblock %}
 
 {% block content %}
@@ -39,7 +41,8 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{  page_obj.paginator.count }} results</p>
+                                    <p>Showing {{ page_obj.start_index }}–{{ page_obj.end_index }}
+                                        of {{ page_obj.paginator.count }} results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -47,9 +50,13 @@
                                     <p>Sort by Price:</p>
                                     <select onchange="addUrlParameter('sort', this.value)">
                                         <option value="">-----</option>
-                                        <option {% if request.GET.sort == 'price' %}selected{% endif %} value="price">Low To High</option>
-                                        <option {% if request.GET.sort == '-price' %}selected{% endif %} value="-price">High To Low</option>
-{#                                        <option value="sale">Sale</option>#}
+                                        <option {% if request.GET.sort == 'price' %}selected{% endif %} value="price">
+                                            Low To High
+                                        </option>
+                                        <option {% if request.GET.sort == '-price' %}selected{% endif %} value="-price">
+                                            High To Low
+                                        </option>
+                                        {#                                        <option value="sale">Sale</option>#}
                                     </select>
                                 </div>
                             </div>
@@ -66,12 +73,13 @@
                         <div class="col-lg-12">
                             <div class="product__pagination">
                                 {% for page in page_obj.paginator.page_range %}
-                                    <a class="{% if page == page_obj.number %}active{% endif %}" href="?page={{ page }}">{{ page }}</a>
+                                    <a class="{% if page == page_obj.number %}active{% endif %}"
+                                       href="?page={{ page }}">{{ page }}</a>
                                 {% endfor %}
-{#                                <a href="#">2</a>#}
-{#                                <a href="#">3</a>#}
-{#                                <span>...</span>#}
-{#                                <a href="#">21</a>#}
+                                {#                                <a href="#">2</a>#}
+                                {#                                <a href="#">3</a>#}
+                                {#                                <span>...</span>#}
+                                {#                                <a href="#">21</a>#}
                             </div>
                         </div>
                     </div>
@@ -82,16 +90,29 @@
 {% endblock %}
 
 {% block extra_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
     <script>
-        function addUrlParameter(name, value){
+        function addUrlParameter(name, value) {
             let searchParameter = new URLSearchParams(window.location.search)
-            if(searchParameter.has(name) && searchParameter.get(name) == value){ <!-- cat=2&tag=1 -->
+            if (searchParameter.has(name) && searchParameter.get(name) == value) { <!-- cat=2&tag=1 -->
                 searchParameter.delete(name)
-            }else {
+            } else {
                 searchParameter.set(name, value)
             }
 
             window.location.search = searchParameter.toString()
         }
+
+        $(".js-range-slider").ionRangeSlider({
+            type: "double",
+            min: {{ min_price }},
+            max: {{ max_price }},
+            from: 50,
+            to: 70,
+            grid: true,
+            prefix: "$",
+        });
     </script>
+
 {% endblock %}
