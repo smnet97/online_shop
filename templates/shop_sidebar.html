@@ -4,8 +4,9 @@
         <form action="{% url 'shop:home' %}" , method="GET">
             <input name="search" value="{{ request.GET.search }}" type="text" placeholder="Search...">
             <button type="submit"><span class="icon_search"></span></button>
-            <a style="color: black" href="{% url 'shop:home' %}">Clear filter</a>
         </form>
+        <a style="color: black" href="{% url 'shop:home' %}">Clear filter</a>
+
     </div>
     <div class="shop__sidebar__accordion">
         <div class="accordion" id="accordionExample">
@@ -52,7 +53,7 @@
                 <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
                     <div class="card-body">
                         <div class="shop__sidebar__price">
-                            <input type="text" class="js-range-slider" name="my_range" value="" />
+                            <input type="text" class="js-range-slider" name="my_range" value=""/>
                         </div>
                     </div>
                 </div>

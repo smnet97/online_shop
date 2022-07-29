@@ -1,7 +1,7 @@
 from django.db.models import Min, Max
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from .models import ProductModel, CategoryModel, ProductTagModel, ColorModel, BrandModel, SizeModel
+from .models import ProductModel, CategoryModel, ProductTagModel, ColorModel, BrandModel, SizeModel, WishlistModel
 
 
 class ShopView(ListView):
@@ -69,3 +69,9 @@ class ProductDetailView(DetailView):
         data = super().get_context_data()
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)[:4]
         return data
+
+
+def wishlist_view(request, pk):
+    product = get_object_or_404(ProductModel, pk=pk)
+    WishlistModel.create_or_delete(request.user, product)
+    return redirect(request.GET.get('next', '/'))
