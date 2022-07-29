@@ -1,0 +1,81 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block content %}
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Shop</h4>
+                        <div class="breadcrumb__links">
+                            <a href="{% url 'pages:home' %}">Home</a>
+                            <span>Wishlists</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shop__product__option">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__left">
+                                    <p>Showing {{ page_obj.start_index }}–{{ page_obj.end_index }}
+                                        of {{ page_obj.paginator.count }} results</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="shop__product__option__right">
+                                    <p>Sort by Price:</p>
+                                    <select onchange="addUrlParameter('sort', this.value)">
+                                        <option value="">-----</option>
+                                        <option {% if request.GET.sort == 'price' %}selected{% endif %} value="price">
+                                            Low To High
+                                        </option>
+                                        <option {% if request.GET.sort == '-price' %}selected{% endif %} value="-price">
+                                            High To Low
+                                        </option>
+                                        <option {% if request.GET.sort == 'sale' %}selected{% endif %} value="sale">Sale</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for product in object_list %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                {% include 'product_item.html' %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="product__pagination">
+                                {% for page in page_obj.paginator.page_range %}
+                                    <a class="{% if page == page_obj.number %}active{% endif %}"
+                                       href="?page={{ page }}">{{ page }}</a>
+                                {% endfor %}
+                                {#                                <a href="#">2</a>#}
+                                {#                                <a href="#">3</a>#}
+                                {#                                <span>...</span>#}
+                                {#                                <a href="#">21</a>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
