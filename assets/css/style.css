@@ -3862,4 +3862,9 @@ ol {
 	.categories__text:before {
 		height: 250px;
 	}
+
+	.my_lang:hover a{
+		background: #0b0b0b !important;
+		color: white !important;
+	}
 }

@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-07 04:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: blogs/models.py:7
+msgid "full name"
+msgstr ""
+
+#: blogs/models.py:8 pages/models.py:23
+msgid "image"
+msgstr ""
+
+#: blogs/models.py:14
+msgid "auther"
+msgstr ""
+
+#: blogs/models.py:15
+msgid "authers"
+msgstr ""
+
+#: blogs/models.py:19 blogs/models.py:50 pages/models.py:6 shop/models.py:12
+#: shop/models.py:24 shop/models.py:36 shop/models.py:48 shop/models.py:60
+msgid "name"
+msgstr ""
+
+#: blogs/models.py:20 blogs/models.py:37 blogs/models.py:55 pages/models.py:9
+#: shop/models.py:13 shop/models.py:25 shop/models.py:37 shop/models.py:49
+#: shop/models.py:61 shop/models.py:80
+msgid "created at"
+msgstr ""
+
+#: blogs/models.py:26 blogs/models.py:36
+msgid "tag"
+msgstr ""
+
+#: blogs/models.py:27 shop/models.py:90
+msgid "tags"
+msgstr ""
+
+#: blogs/models.py:31 pages/models.py:21 shop/models.py:72
+msgid "title"
+msgstr ""
+
+#: blogs/models.py:32
+msgid "body"
+msgstr ""
+
+#: blogs/models.py:33 shop/models.py:79
+msgid "main image"
+msgstr ""
+
+#: blogs/models.py:34
+msgid "banner"
+msgstr ""
+
+#: blogs/models.py:45 blogs/models.py:54
+msgid "post"
+msgstr ""
+
+#: blogs/models.py:46
+msgid "posts"
+msgstr ""
+
+#: blogs/models.py:51 pages/models.py:7
+msgid "email"
+msgstr ""
+
+#: blogs/models.py:52
+msgid "phone"
+msgstr ""
+
+#: blogs/models.py:53 blogs/models.py:61
+msgid "comment"
+msgstr ""
+
+#: blogs/models.py:62
+msgid "comments"
+msgstr ""
+
+#: config/settings.py:97
+msgid "en"
+msgstr ""
+
+#: config/settings.py:98
+msgid "ru"
+msgstr ""
+
+#: config/settings.py:99
+msgid "uz"
+msgstr ""
+
+#: pages/models.py:8
+msgid "massage"
+msgstr ""
+
+#: pages/models.py:20
+msgid "collection"
+msgstr ""
+
+#: pages/models.py:22
+msgid "description"
+msgstr ""
+
+#: pages/models.py:24
+msgid "created_at"
+msgstr ""
+
+#: pages/models.py:25
+msgid "is active"
+msgstr ""
+
+#: shop/models.py:73
+msgid "short description"
+msgstr ""
+
+#: shop/models.py:74
+msgid "long description"
+msgstr ""
+
+#: shop/models.py:75
+msgid "price"
+msgstr ""
+
+#: shop/models.py:76
+msgid "real price"
+msgstr ""
+
+#: shop/models.py:77
+msgid "sale"
+msgstr ""
+
+#: shop/models.py:78
+msgid "discount"
+msgstr ""
+
+#: shop/models.py:85
+msgid "category"
+msgstr ""
+
+#: shop/models.py:95
+msgid "sizes"
+msgstr ""
+
+#: shop/models.py:100
+msgid "colors"
+msgstr ""
+
+#: shop/models.py:106
+msgid "brand"
+msgstr ""
+
+#: shop/models.py:132
+msgid "user"
+msgstr ""
+
+#: shop/models.py:133
+msgid "product"
+msgstr ""
+
+#: templates/layouts/navbar.html:58
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/layouts/navbar.html:60
+msgid "Sign in"
+msgstr "Войти"
+
+#: templates/layouts/navbar.html:95
+msgid "Home"
+msgstr "Главный"
+
+#: templates/layouts/navbar.html:99
+msgid "Blog"
+msgstr "Блог"
+
+#: templates/layouts/navbar.html:101
+msgid "Contacts"
+msgstr ""

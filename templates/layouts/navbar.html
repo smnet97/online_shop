@@ -1,5 +1,17 @@
 {% load static %}
 {% load my_tags %}
+{% load i18n %}
+{% block extra_css %}
+    <style>
+        .my_lang:hover {
+            background: #0b0b0b !important;
+        }
+        .my_lang:hover a{
+            color: white !important;
+        }
+    </style>
+
+{% endblock %}
 <!-- Offcanvas Menu Begin -->
 <div class="offcanvas-menu-overlay"></div>
 <div class="offcanvas-menu-wrapper">
@@ -8,7 +20,9 @@
             <a href="#">Sign in</a>
         </div>
         <div class="offcanvas__top__hover">
-            <span>EN <i class="arrow_carrot-down"></i></span>
+            {% get_current_language as LANGUAGE_CODE %}
+
+            <span>{{ LANGUAGE_CODE }} <i class="arrow_carrot-down"></i></span>
             <ul>
                 <li>EN</li>
                 <li>UZ</li>
@@ -41,17 +55,25 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             {% if request.user.is_authenticated %}
-                                <a href="#">Log out</a>
+                                <a href="#">{% trans 'Log out' %}</a>
                             {% else %}
-                                <a href="#">Sign in</a>
+                                <a href="#">{% trans 'Sign in' %}</a>
                             {% endif %}
                         </div>
                         <div class="header__top__hover">
-                            <span>EN <i class="arrow_carrot-down"></i></span>
+                            <span>{{ LANGUAGE_CODE }} <i class="arrow_carrot-down"></i></span>
+                            {% get_available_languages as LANGUAGES %}
+
                             <ul>
-                                <li>EN</li>
-                                <li>UZ</li>
-                                <li>RU</li>
+                                {% for lang in LANGUAGES %}
+                                    {% if lang.0 != LANGUAGE_CODE %}
+                                        <li class="my_lang">
+                                            <a href="/{{ lang.0 }}/{{ request.path|slice:"4:" }}" class="text-dark">
+                                                {{ lang.0|upper }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -69,10 +91,19 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'pages:home' %}">Home</a></li>
-                        <li class="{% if request.path == '/shop/' %}active{% endif %}"><a href="{% url 'shop:home' %}">Shop</a></li>
-                        <li class="{% if request.path == '/blog/' %}active{% endif %}"><a href="{% url 'blogs:posts' %}">Blog</a></li>
-                        <li class="{% if request.path == '/contact/' %}active{% endif %}"><a href="{% url 'pages:contact' %}">Contacts</a></li>
+                        {% url 'pages:home' as current_link %}
+                        <li class="{% if request.path == current_link %}active{% endif %}"><a
+                                href="{% url 'pages:home' %}">{% trans 'Home' %}</a></li>
+                        {% url 'shop:home' as current_link %}
+                        <li class="{% if request.path == current_link %}active{% endif %}">
+                            <a href="{% url 'shop:home' %}">Shop</a>
+                        </li>
+                        {% url 'blogs:posts' as current_link %}
+                        <li class="{% if request.path == current_link %}active{% endif %}"><a
+                                href="{% url 'blogs:posts' %}">{% trans 'Blog' %}</a></li>
+                        {% url 'pages:contact' as current_link %}
+                        <li class="{% if request.path == current_link %}active{% endif %}"><a
+                                href="{% url 'pages:contact' %}">{% trans 'Contacts' %}</a></li>
                     </ul>
                 </nav>
             </div>
