@@ -6,6 +6,13 @@ from django.views.generic import ListView, DetailView
 from .models import ProductModel, CategoryModel, ProductTagModel, ColorModel, BrandModel, SizeModel, WishlistModel
 
 
+class ShoppingCartView(ListView):
+    template_name = 'shopping-cart.html'
+
+    def get_queryset(self):
+        products = ProductModel.get_cart_objects(self.request)
+        return products
+
 class ShopView(ListView):
     template_name = 'shop.html'
     paginate_by = 3

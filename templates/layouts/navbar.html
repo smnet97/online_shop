@@ -55,6 +55,7 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             {% if request.user.is_authenticated %}
+                                <a href="">{% trans 'Order History' %}</a>
                                 <a href="{% url 'user:profile' %}">{% trans 'Profile' %}</a>
                                 <a href="{% url 'user:logout' %}">{% trans 'Log out' %}</a>
                             {% else %}
@@ -115,7 +116,7 @@
                         <a href="{% url 'shop:all_wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
                     {% endif %}
                     {% cart_info request as info %}
-                    <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{ info.0 }}</span></a>
+                    <a href="{% url 'shop:shopping_cart' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{ info.0 }}</span></a>
                     <div class="price">${{ info.1 }}</div>
                 </div>
             </div>

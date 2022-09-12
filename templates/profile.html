@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -26,6 +25,7 @@
         <div class="container">
             <div class="checkout__form">
                 <form action="#", method="post">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <h6 class="coupon__code"><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click
@@ -34,49 +34,49 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Fist Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>Fist Name </p>
+                                        {{ form.first_name }}
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Last Name<span>*</span></p>
-                                        <input type="text">
+                                        <p>Last Name </p>
+                                        {{ form.last_name }}
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
-                                <p>Country<span>*</span></p>
-                                <input type="text">
+                                <p>Country </p>
+                                {{ form.country }}
                             </div>
                             <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input type="text" placeholder="Street Address" class="checkout__input__add">
-                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)">
+                                <p>Address </p>
+                                {{ form.address1 }}
+                                {{ form.address2 }}
                             </div>
                             <div class="checkout__input">
-                                <p>Town/City<span>*</span></p>
-                                <input type="text">
+                                <p>Town/City </p>
+                                {{ form.city }}
                             </div>
                             <div class="checkout__input">
-                                <p>Country/State<span>*</span></p>
-                                <input type="text">
+                                <p>Country/State </p>
+                                {{ form.state }}
                             </div>
                             <div class="checkout__input">
-                                <p>Postcode / ZIP<span>*</span></p>
-                                <input type="text">
+                                <p>Postcode / ZIP </p>
+                                {{ form.zip_code }}
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                        <p>Phone </p>
+                                        {{ form.phone }}
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
+                                        <p>Email </p>
+                                        {{ form.email }}
                                     </div>
                                 </div>
                             </div>
