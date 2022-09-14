@@ -4,7 +4,7 @@ from shop.models import ProductModel
 
 
 class OrderHistoryModel(models.Model):
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True, blank=True)
     products = models.ManyToManyField(ProductModel)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -16,6 +16,7 @@ class OrderHistoryModel(models.Model):
     state = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=6)
     email = models.EmailField(null=True)
+    total_price = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

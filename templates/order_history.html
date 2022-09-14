@@ -21,6 +21,42 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Products</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Total price</th>
+                        <th scope="col">Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in object_list %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ order.id }}</td>
+                            <td>
+                                <ul>
+                                    {% for p in order.products.all %}
+                                        <li>{{ p }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ order.phone }}</td>
+                            <td>$ {{ order.total_price }}</td>
+                            <td>{{ order.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 {% endblock %}
